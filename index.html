@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kemble Vine | Full 360 Creator Management</title>
+    <meta name="description" content="Kemble Vine provides full 360 management for content creators. Brand deals, strategy, growth, and everything in between.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --color-bg: #ffffff;
+            --color-bg-secondary: #f7f7f5;
+            --color-bg-tertiary: #f0f0ee;
+            --color-text: #37352f;
+            --color-text-secondary: #6b6b6b;
+            --color-text-light: #9b9a97;
+            --color-accent: #2eaadc;
+            --color-accent-hover: #2496c4;
+            --color-accent-light: #e7f3f8;
+            --color-border: #e9e9e7;
+            --color-success: #0f7b6c;
+            --color-purple: #9065b0;
+            --color-orange: #d9730d;
+            --color-pink: #e255a1;
+
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 2rem;
+            --font-size-4xl: 2.5rem;
+            --font-size-5xl: 3.5rem;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 5rem;
+            --spacing-3xl: 8rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 400ms ease;
+
+            --max-width: 1200px;
+            --max-width-narrow: 800px;
+        }
+
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .container--narrow {
+            max-width: var(--max-width-narrow);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-family);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .btn--primary {
+            background-color: var(--color-text);
+            color: var(--color-bg);
+        }
+
+        .btn--primary:hover {
+            background-color: #1a1a1a;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn--secondary {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn--secondary:hover {
+            background-color: var(--color-bg-secondary);
+            border-color: var(--color-text-light);
+        }
+
+        .btn--large {
+            padding: 1rem 2rem;
+            font-size: var(--font-size-base);
+        }
+
+        .btn--icon {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav__logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+        }
+
+        .nav__logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-accent) 100%);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: var(--font-size-sm);
+        }
+
+        .nav__links {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav__link {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            transition: color var(--transition-fast);
+        }
+
+        .nav__link:hover {
+            color: var(--color-text);
+        }
+
+        .nav__cta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .nav__mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav__mobile-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: var(--color-text);
+            border-radius: 2px;
+            transition: all var(--transition-fast);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: calc(64px + var(--spacing-3xl)) 0 var(--spacing-3xl);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+        }
+
+        .hero__inner {
+            text-align: center;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.5rem 1rem;
+            background-color: var(--color-accent-light);
+            color: var(--color-accent);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            border-radius: 100px;
+            margin-bottom: var(--spacing-lg);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero__badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero__title {
+            font-size: clamp(var(--font-size-3xl), 6vw, var(--font-size-5xl));
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--spacing-md);
+            animation: fadeInUp 0.6s ease-out 0.1s backwards;
+        }
+
+        .hero__title-highlight {
+            background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-accent) 50%, var(--color-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero__subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-xl);
+            animation: fadeInUp 0.6s ease-out 0.2s backwards;
+        }
+
+        .hero__cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            animation: fadeInUp 0.6s ease-out 0.3s backwards;
+        }
+
+        .hero__stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            max-width: 600px;
+            margin: var(--spacing-2xl) auto 0;
+            padding-top: var(--spacing-2xl);
+            border-top: 1px solid var(--color-border);
+            animation: fadeInUp 0.6s ease-out 0.4s backwards;
+        }
+
+        .hero__stat-value {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .hero__stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .section__header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-2xl);
+        }
+
+        .section__label {
+            display: inline-block;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section__title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section__subtitle {
+            color: var(--color-text-secondary);
+        }
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .service-card {
+            padding: var(--spacing-lg);
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+        }
+
+        .service-card:hover {
+            border-color: var(--color-text-light);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .service-card__icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-bg-secondary);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.5rem;
+        }
+
+        .service-card__title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .service-card__description {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ===== WHY US SECTION ===== */
+        .why-us {
+            padding: var(--spacing-3xl) 0;
+            background-color: var(--color-bg-secondary);
+        }
+
+        .why-us__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .why-us__content h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .why-us__content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .why-us__features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .why-us__feature {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+        }
+
+        .why-us__feature-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--color-success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .why-us__visual {
+            position: relative;
+        }
+
+        .why-us__card-stack {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .why-us__card {
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-base);
+        }
+
+        .why-us__card:hover {
+            transform: translateX(8px);
+        }
+
+        .why-us__card-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .why-us__card-content h4 {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+
+        .why-us__card-content p {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .why-us__card-stat {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .why-us__card-stat-value {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--color-success);
+        }
+
+        .why-us__card-stat-label {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-secondary);
+        }
+
+        /* ===== PROCESS SECTION ===== */
+        .process {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .process__steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            position: relative;
+        }
+
+        .process__step {
+            position: relative;
+            padding: var(--spacing-lg);
+        }
+
+        .process__step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-text);
+            color: var(--color-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .process__step-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .process__step-description {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            padding: var(--spacing-3xl) 0;
+            background-color: var(--color-bg-secondary);
+        }
+
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .testimonial-card {
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-base);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-card__quote {
+            font-size: var(--font-size-base);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-card__avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-pink) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .testimonial-card__name {
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+        }
+
+        .testimonial-card__role {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-secondary);
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .faq__list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq__item {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .faq__question {
+            width: 100%;
+            padding: var(--spacing-md) 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            color: var(--color-text);
+            transition: color var(--transition-fast);
+        }
+
+        .faq__question:hover {
+            color: var(--color-accent);
+        }
+
+        .faq__icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            background-color: var(--color-bg-secondary);
+            font-size: 18px;
+            transition: transform var(--transition-fast);
+        }
+
+        .faq__item.active .faq__icon {
+            transform: rotate(45deg);
+        }
+
+        .faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-base), padding var(--transition-base);
+        }
+
+        .faq__item.active .faq__answer {
+            max-height: 200px;
+            padding-bottom: var(--spacing-md);
+        }
+
+        .faq__answer p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.7;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(135deg, var(--color-text) 0%, #1a1a1a 100%);
+            color: var(--color-bg);
+        }
+
+        .cta__inner {
+            text-align: center;
+        }
+
+        .cta__title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta__subtitle {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xl);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn--primary {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .cta .btn--primary:hover {
+            background-color: var(--color-bg-secondary);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: var(--spacing-2xl) 0 var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer__inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-2xl);
+        }
+
+        .footer__brand {
+            max-width: 280px;
+        }
+
+        .footer__logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer__description {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer__social {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+
+        .footer__social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-bg-secondary);
+            border-radius: var(--radius-sm);
+            color: var(--color-text-secondary);
+            transition: all var(--transition-fast);
+        }
+
+        .footer__social-link:hover {
+            background-color: var(--color-text);
+            color: var(--color-bg);
+        }
+
+        .footer__column-title {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer__links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .footer__link {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            transition: color var(--transition-fast);
+        }
+
+        .footer__link:hover {
+            color: var(--color-text);
+        }
+
+        .footer__bottom {
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer__copyright {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .why-us__grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+
+            .footer__inner {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-xl);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav__links {
+                display: none;
+            }
+
+            .nav__mobile-toggle {
+                display: flex;
+            }
+
+            .nav__cta .btn--secondary {
+                display: none;
+            }
+
+            .hero__stats {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .footer__inner {
+                grid-template-columns: 1fr;
+            }
+
+            .footer__bottom {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero__cta {
+                flex-direction: column;
+            }
+
+            .hero__cta .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__inner container">
+            <a href="#" class="nav__logo">
+                <div class="nav__logo-icon">KV</div>
+                Kemble Vine
+            </a>
+            <ul class="nav__links">
+                <li><a href="#services" class="nav__link">Services</a></li>
+                <li><a href="#why-us" class="nav__link">Why Us</a></li>
+                <li><a href="#process" class="nav__link">Process</a></li>
+                <li><a href="#testimonials" class="nav__link">Testimonials</a></li>
+                <li><a href="#faq" class="nav__link">FAQ</a></li>
+            </ul>
+            <div class="nav__cta">
+                <a href="#contact" class="btn btn--secondary">Contact</a>
+                <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn--primary">Book a Call</a>
+            </div>
+            <button class="nav__mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__inner container">
+            <span class="hero__badge">Now accepting new creators</span>
+            <h1 class="hero__title">
+                Full 360 Management<br>
+                for <span class="hero__title-highlight">Content Creators</span>
+            </h1>
+            <p class="hero__subtitle">
+                We handle everything so you can focus on creating. Brand deals, strategy, growth, content planning, and everything in between.
+            </p>
+            <div class="hero__cta">
+                <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn--primary btn--large">
+                    Book a Discovery Call
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#services" class="btn btn--secondary btn--large">Learn More</a>
+            </div>
+            <div class="hero__stats">
+                <div class="hero__stat">
+                    <div class="hero__stat-value">$50M+</div>
+                    <div class="hero__stat-label">Revenue Generated</div>
+                </div>
+                <div class="hero__stat">
+                    <div class="hero__stat-value">200+</div>
+                    <div class="hero__stat-label">Brand Partnerships</div>
+                </div>
+                <div class="hero__stat">
+                    <div class="hero__stat-value">50+</div>
+                    <div class="hero__stat-label">Creators Managed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <span class="section__label">Our Services</span>
+                <h2 class="section__title">Everything You Need to Grow</h2>
+                <p class="section__subtitle">Comprehensive creator management that covers every aspect of your career.</p>
+            </div>
+            <div class="services__grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-card__icon">💼</div>
+                    <h3 class="service-card__title">Brand Partnerships</h3>
+                    <p class="service-card__description">We negotiate and secure high-value brand deals that align with your audience and values.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-card__icon">📈</div>
+                    <h3 class="service-card__title">Growth Strategy</h3>
+                    <p class="service-card__description">Data-driven strategies to grow your audience across all platforms sustainably.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-card__icon">📅</div>
+                    <h3 class="service-card__title">Content Planning</h3>
+                    <p class="service-card__description">Strategic content calendars that keep you consistent and maximize engagement.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-card__icon">📝</div>
+                    <h3 class="service-card__title">Contract Negotiation</h3>
+                    <p class="service-card__description">Expert contract review and negotiation to protect your interests and maximize earnings.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-card__icon">🎯</div>
+                    <h3 class="service-card__title">Personal Branding</h3>
+                    <p class="service-card__description">Build a distinctive personal brand that sets you apart in a crowded market.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-card__icon">💰</div>
+                    <h3 class="service-card__title">Revenue Diversification</h3>
+                    <p class="service-card__description">Multiple income streams beyond sponsorships including merch, courses, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="why-us">
+        <div class="why-us__grid container">
+            <div class="why-us__content animate-on-scroll">
+                <h2>Why Creators Choose Kemble Vine</h2>
+                <p>We're not just another management agency. We're partners invested in your long-term success, treating your career as if it were our own.</p>
+                <ul class="why-us__features">
+                    <li class="why-us__feature">
+                        <span class="why-us__feature-icon">✓</span>
+                        <span>Personalized strategy tailored to your unique voice and goals</span>
+                    </li>
+                    <li class="why-us__feature">
+                        <span class="why-us__feature-icon">✓</span>
+                        <span>Transparent communication with 24/7 support when you need it</span>
+                    </li>
+                    <li class="why-us__feature">
+                        <span class="why-us__feature-icon">✓</span>
+                        <span>Industry connections with 500+ brands across all verticals</span>
+                    </li>
+                    <li class="why-us__feature">
+                        <span class="why-us__feature-icon">✓</span>
+                        <span>No hidden fees - simple, fair commission structure</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="why-us__visual animate-on-scroll">
+                <div class="why-us__card-stack">
+                    <div class="why-us__card">
+                        <div class="why-us__card-avatar">SC</div>
+                        <div class="why-us__card-content">
+                            <h4>Sarah Chen</h4>
+                            <p>Lifestyle Creator</p>
+                        </div>
+                        <div class="why-us__card-stat">
+                            <div class="why-us__card-stat-value">+340%</div>
+                            <div class="why-us__card-stat-label">Revenue Growth</div>
+                        </div>
+                    </div>
+                    <div class="why-us__card">
+                        <div class="why-us__card-avatar">MJ</div>
+                        <div class="why-us__card-content">
+                            <h4>Marcus Johnson</h4>
+                            <p>Tech Reviewer</p>
+                        </div>
+                        <div class="why-us__card-stat">
+                            <div class="why-us__card-stat-value">+520%</div>
+                            <div class="why-us__card-stat-label">Follower Growth</div>
+                        </div>
+                    </div>
+                    <div class="why-us__card">
+                        <div class="why-us__card-avatar">ER</div>
+                        <div class="why-us__card-content">
+                            <h4>Emma Rodriguez</h4>
+                            <p>Fitness Influencer</p>
+                        </div>
+                        <div class="why-us__card-stat">
+                            <div class="why-us__card-stat-value">45</div>
+                            <div class="why-us__card-stat-label">Brand Deals/Year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <span class="section__label">How It Works</span>
+                <h2 class="section__title">Simple Process, Powerful Results</h2>
+                <p class="section__subtitle">Getting started with Kemble Vine is easy. Here's how we work together.</p>
+            </div>
+            <div class="process__steps">
+                <div class="process__step animate-on-scroll">
+                    <div class="process__step-number">1</div>
+                    <h3 class="process__step-title">Discovery Call</h3>
+                    <p class="process__step-description">Book a free 30-minute call where we learn about your goals, current situation, and vision for the future.</p>
+                </div>
+                <div class="process__step animate-on-scroll">
+                    <div class="process__step-number">2</div>
+                    <h3 class="process__step-title">Custom Strategy</h3>
+                    <p class="process__step-description">We develop a personalized growth and monetization strategy based on your unique strengths and audience.</p>
+                </div>
+                <div class="process__step animate-on-scroll">
+                    <div class="process__step-number">3</div>
+                    <h3 class="process__step-title">Execute & Grow</h3>
+                    <p class="process__step-description">We handle the business side while you focus on creating. Watch your career take off.</p>
+                </div>
+                <div class="process__step animate-on-scroll">
+                    <div class="process__step-number">4</div>
+                    <h3 class="process__step-title">Scale Together</h3>
+                    <p class="process__step-description">As you grow, we adapt. More opportunities, bigger deals, and new revenue streams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <span class="section__label">Testimonials</span>
+                <h2 class="section__title">Loved by Creators</h2>
+                <p class="section__subtitle">Don't just take our word for it. Here's what our creators say.</p>
+            </div>
+            <div class="testimonials__grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-card__quote">"Kemble Vine completely transformed my career. Within 6 months, I went from struggling to land deals to having brands reach out to me. They genuinely care about my success."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">AK</div>
+                        <div>
+                            <div class="testimonial-card__name">Alex Kim</div>
+                            <div class="testimonial-card__role">Gaming Creator • 2M Subscribers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-card__quote">"The team at Kemble Vine treats me like a partner, not just a client. They've helped me build multiple income streams and negotiate deals I never thought possible."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">JT</div>
+                        <div>
+                            <div class="testimonial-card__name">Jordan Taylor</div>
+                            <div class="testimonial-card__role">Beauty Influencer • 800K Followers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-card__quote">"Finally, a management team that actually responds and follows through. They've been instrumental in helping me turn my passion into a sustainable business."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">RP</div>
+                        <div>
+                            <div class="testimonial-card__name">Rachel Park</div>
+                            <div class="testimonial-card__role">Food Creator • 1.5M Followers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <span class="section__label">FAQ</span>
+                <h2 class="section__title">Frequently Asked Questions</h2>
+                <p class="section__subtitle">Got questions? We've got answers.</p>
+            </div>
+            <div class="faq__list">
+                <div class="faq__item active">
+                    <button class="faq__question">
+                        What size creators do you work with?
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>We work with creators at various stages of their journey, typically those with 50K+ followers who are serious about growing their career. However, we evaluate each creator individually based on potential and commitment.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        What is your commission structure?
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>We operate on a simple, transparent commission model. We only make money when you make money. Details are discussed during our discovery call as rates can vary based on services needed.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        How is Kemble Vine different from other agencies?
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Unlike traditional agencies that manage hundreds of creators, we keep our roster intentionally small. This allows us to provide truly personalized service and treat each creator as a priority, not a number.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        What platforms do you specialize in?
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>We specialize in all major platforms including YouTube, TikTok, Instagram, Twitter/X, and emerging platforms. Our strategies are platform-agnostic and focused on building your overall personal brand.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        How long are your contracts?
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>We typically start with a 12-month agreement to allow enough time to implement strategies and see results. However, we're flexible and believe in earning your continued partnership through results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta">
+        <div class="cta__inner container">
+            <h2 class="cta__title">Ready to Level Up Your Career?</h2>
+            <p class="cta__subtitle">Book a free discovery call and let's discuss how we can help you reach your goals.</p>
+            <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn--primary btn--large">
+                Schedule Your Free Call
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <a href="#" class="footer__logo">
+                        <div class="nav__logo-icon">KV</div>
+                        Kemble Vine
+                    </a>
+                    <p class="footer__description">Full 360 management for content creators. We handle the business so you can focus on creating.</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link" aria-label="Twitter">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer__social-link" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="18" cy="6" r="1"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer__social-link" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer__social-link" aria-label="TikTok">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Company</h4>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">About Us</a></li>
+                        <li><a href="#services" class="footer__link">Services</a></li>
+                        <li><a href="#" class="footer__link">Careers</a></li>
+                        <li><a href="#contact" class="footer__link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Resources</h4>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">Blog</a></li>
+                        <li><a href="#faq" class="footer__link">FAQ</a></li>
+                        <li><a href="#" class="footer__link">Case Studies</a></li>
+                        <li><a href="#" class="footer__link">Creator Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Legal</h4>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer__link">Terms of Service</a></li>
+                        <li><a href="#" class="footer__link">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Kemble Vine. All rights reserved.</p>
+                <p class="footer__copyright">Made with care for creators</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq__question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all items
+                document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('active'));
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const mobileToggle = document.querySelector('.nav__mobile-toggle');
+        const navLinks = document.querySelector('.nav__links');
+
+        if (mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+
+        // Navbar background on scroll
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
