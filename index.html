@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kemble Vine Management | Premium Creator Management</title>
-    <meta name="description" content="Kemble Vine Management is a premium creator management agency and exclusive HMU.co partner. Over $750K generated in the creator economy in under 2 years. UK-based team.">
+    <meta name="description" content="Kemble Vine Management is the ONLY HMU.co partner agency. Premium creator management with $750K+ generated. UK-based team delivering proven results.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -865,19 +865,85 @@
         @media (max-width: 768px) {
             .nav__links {
                 display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background-color: var(--color-bg);
+                border-bottom: 1px solid var(--color-border);
+                flex-direction: column;
+                padding: var(--spacing-md);
+                gap: 0;
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav__links.active {
+                display: flex;
+            }
+
+            .nav__links li {
+                width: 100%;
+            }
+
+            .nav__link {
+                display: block;
+                padding: var(--spacing-sm) 0;
+                border-bottom: 1px solid var(--color-border);
             }
 
             .nav__mobile-toggle {
                 display: flex;
             }
 
+            .nav__mobile-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav__mobile-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav__mobile-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
             .nav__cta .btn--secondary {
                 display: none;
+            }
+
+            .hero {
+                padding: calc(64px + var(--spacing-xl)) 0 var(--spacing-xl);
+                min-height: auto;
+            }
+
+            .hero__title {
+                font-size: var(--font-size-3xl);
+            }
+
+            .hero__cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero__cta .btn {
+                width: 100%;
             }
 
             .hero__stats {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-md);
+            }
+
+            .services__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process__steps {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials__grid {
+                grid-template-columns: 1fr;
             }
 
             .footer__inner {
@@ -889,15 +955,42 @@
                 gap: var(--spacing-sm);
                 text-align: center;
             }
+
+            .section__title {
+                font-size: var(--font-size-2xl);
+            }
+
+            .why-us__content h2 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .cta__title {
+                font-size: var(--font-size-2xl);
+            }
         }
 
         @media (max-width: 480px) {
-            .hero__cta {
-                flex-direction: column;
+            .container {
+                padding: 0 var(--spacing-sm);
             }
 
-            .hero__cta .btn {
-                width: 100%;
+            .hero__badge {
+                font-size: var(--font-size-xs);
+                padding: 0.4rem 0.8rem;
+            }
+
+            .service-card {
+                padding: var(--spacing-md);
+            }
+
+            .why-us__card {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-sm);
+            }
+
+            .why-us__card-stat {
+                margin-left: 0;
             }
         }
     </style>
@@ -932,7 +1025,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero__inner container">
-            <span class="hero__badge">Exclusive HMU.co Partner</span>
+            <span class="hero__badge">The ONLY HMU.co Partner Agency</span>
             <h1 class="hero__title">
                 Premium Creator<br>
                 <span class="hero__title-highlight">Management</span>
@@ -952,7 +1045,7 @@
             <div class="hero__stats">
                 <div class="hero__stat">
                     <div class="hero__stat-value">$750K+</div>
-                    <div class="hero__stat-label">Generated in Under 2 Years</div>
+                    <div class="hero__stat-label">Generated</div>
                 </div>
                 <div class="hero__stat">
                     <div class="hero__stat-value">3+</div>
@@ -1014,11 +1107,11 @@
         <div class="why-us__grid container">
             <div class="why-us__content animate-on-scroll">
                 <h2>Why Creators Choose Kemble Vine Management</h2>
-                <p>We deliver results that speak for themselves. Our exclusive partnerships and UK-based team set us apart from every other agency.</p>
+                <p>We are the <strong>ONLY</strong> agency with a direct HMU.co partnership. No other agency has this access. Our UK-based team and proven track record set us apart.</p>
                 <ul class="why-us__features">
                     <li class="why-us__feature">
                         <span class="why-us__feature-icon">✓</span>
-                        <span>Direct platform partnership with HMU.co for exclusive access</span>
+                        <span><strong>The ONLY HMU.co partner agency</strong> — exclusive access no one else has</span>
                     </li>
                     <li class="why-us__feature">
                         <span class="why-us__feature-icon">✓</span>
@@ -1026,7 +1119,7 @@
                     </li>
                     <li class="why-us__feature">
                         <span class="why-us__feature-icon">✓</span>
-                        <span>Proven results: Over $750K generated in under 2 years</span>
+                        <span>Proven results: Over $750K generated for creators</span>
                     </li>
                     <li class="why-us__feature">
                         <span class="why-us__feature-icon">✓</span>
@@ -1040,22 +1133,22 @@
                         <div class="why-us__card-avatar">HMU</div>
                         <div class="why-us__card-content">
                             <h4>HMU.co Partnership</h4>
-                            <p>Exclusive Platform Access</p>
+                            <p>No Other Agency Has This</p>
                         </div>
                         <div class="why-us__card-stat">
-                            <div class="why-us__card-stat-value">Only</div>
-                            <div class="why-us__card-stat-label">UK Partner</div>
+                            <div class="why-us__card-stat-value">ONLY</div>
+                            <div class="why-us__card-stat-label">Partner Agency</div>
                         </div>
                     </div>
                     <div class="why-us__card">
                         <div class="why-us__card-avatar">£</div>
                         <div class="why-us__card-content">
                             <h4>Revenue Generated</h4>
-                            <p>In Under 2 Years</p>
+                            <p>For Our Creators</p>
                         </div>
                         <div class="why-us__card-stat">
                             <div class="why-us__card-stat-value">$750K+</div>
-                            <div class="why-us__card-stat-label">For Creators</div>
+                            <div class="why-us__card-stat-label">And Growing</div>
                         </div>
                     </div>
                     <div class="why-us__card">
@@ -1165,7 +1258,7 @@
                         <span class="faq__icon">+</span>
                     </button>
                     <div class="faq__answer">
-                        <p>HMU.co is a premium direct messaging platform for creators. As their exclusive UK partner, we provide access to advanced monetization tools and features that aren't available through other agencies.</p>
+                        <p>HMU.co is a premium direct messaging platform for creators. We are the ONLY agency with a direct HMU.co partnership — no other agency has this access. This gives our creators exclusive monetization tools and features unavailable anywhere else.</p>
                     </div>
                 </div>
                 <div class="faq__item">
@@ -1201,7 +1294,7 @@
                         <span class="faq__icon">+</span>
                     </button>
                     <div class="faq__answer">
-                        <p>Our professional engagement team is trained to represent your brand authentically. With 3+ years in the creator economy and over $750K generated in under 2 years, our track record speaks for itself.</p>
+                        <p>Our professional engagement team is trained to represent your brand authentically. With 3+ years in the creator economy and over $750K generated for creators, our track record speaks for itself.</p>
                     </div>
                 </div>
             </div>
@@ -1342,13 +1435,22 @@
             });
         });
 
-        // Mobile menu toggle (basic implementation)
+        // Mobile menu toggle
         const mobileToggle = document.querySelector('.nav__mobile-toggle');
         const navLinks = document.querySelector('.nav__links');
 
         if (mobileToggle && navLinks) {
             mobileToggle.addEventListener('click', () => {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                mobileToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            navLinks.querySelectorAll('.nav__link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
             });
         }
 
